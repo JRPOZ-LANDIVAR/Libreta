@@ -7,13 +7,30 @@ public class ArchCSV {
         private static final String ARCHIVO = "contacts.csv";
         private static final String TEMPORAL = "temp.csv";
 
-        public static void agregarContactoAlCSV(Contacto contacto) {
+    public ArchCSV() {
+    }
+
+    public static void agregarContactoAlCSV(Contacto contacto) throws IOException {
             boolean archivoVacio = new File(ARCHIVO).length() == 0;
+            int idNuevo = 0;
            try (PrintWriter writer = new PrintWriter(new FileWriter(ARCHIVO, true))) {
                 if (archivoVacio){
                     writer.println("id" + "," + "nombre" + "," + "apellido" + "," + "apodo" + "," +
                             "numeroTelefono" + "," + "correo" + "," + "direccion" + "," + "fechaNacimiento");
+
                 }
+
+               BufferedReader reader = new BufferedReader(new FileReader(ARCHIVO));
+               String linea;
+
+               reader.readLine();
+               while ((linea = reader.readLine()) != null){
+                   String[] datos = linea.split(",");
+                   idNuevo = Integer.parseInt(datos[0]);
+               }
+               idNuevo = idNuevo+1;
+
+               contacto.setId(idNuevo);
                 writer.println(contacto.toCSV());
                 System.out.println("Contacto agregado correctamente al archivo.");
             } catch (IOException e) {

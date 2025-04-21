@@ -85,7 +85,7 @@ public class Contacto {
     }
 
     public String toCSV(){
-        id++;
+
         return id + "," + nombre + "," + apellido + "," + apodo + "," +
                 numeroTelefono + "," + correo + "," + direccion + "," + fechaNacimiento;
 

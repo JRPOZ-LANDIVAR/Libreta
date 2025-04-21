@@ -1,11 +1,3 @@
-1,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
-1,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
-1,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
-1,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
-1,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
-1,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
-1,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
-1,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
-1,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
-2,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
-3,nombre,apellido,apodo,numeroTelefono,correo,direccion,11/2/2020
+id,nombre,apellido,apodo,numeroTelefono,correo,direccion,fechaNacimiento
+2,JOSE,rodrigo,rodri,113324\,jrodris,,11.09.005
+3,juan,pablo,juanpis,60935443,juanpablo3,,11.5.003
