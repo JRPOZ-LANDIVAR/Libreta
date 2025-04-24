@@ -34,6 +34,9 @@ public class ArbolAVL {
         return balance(node);
     }
 
+    public Nodo getRoot() {
+        return root;
+    }
 
     private Nodo balance(Nodo node) {
         updateHeight(node);

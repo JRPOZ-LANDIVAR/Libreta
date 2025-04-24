@@ -73,28 +73,27 @@ public class ArchCSV {
         PrintWriter writer = new PrintWriter(new FileWriter(TEMPORAL));
 
         String linea;
-        String encabezado = reader.readLine();
-        writer.println(encabezado);
+        String encabezado = reader.readLine(); // Lee el encabezado
+        writer.println(encabezado); // Escribe el encabezado en el archivo temporal
 
         while ((linea = reader.readLine()) != null) {
             String[] datos = linea.split(",");
             int idpersonas = Integer.parseInt(datos[0]);
-            if (id != idpersonas){
-                writer.println(linea);
+            if (id != idpersonas) {
+                writer.println(linea); // Solo escribe si el ID no coincide
             }
         }
 
         reader.close();
         writer.close();
 
-        // Reemplazar el archivo original con el temporal
         File archivoOriginal = new File(ARCHIVO);
         File archivoTemp = new File(TEMPORAL);
 
-        archivoOriginal.delete();
-        archivoTemp.renameTo(archivoOriginal);
-        System.out.println("El contacto ha sido eliminado correctamente");
+        archivoOriginal.delete(); // Elimina el archivo original
+        archivoTemp.renameTo(archivoOriginal); // Renombra el archivo temporal
 
+        System.out.println("El contacto ha sido eliminado correctamente");
     }
 
 
@@ -143,21 +142,14 @@ public class ArchCSV {
 
     }
 
-    public static HashMap<Integer, String> guardarPorCampo() throws IOException {
+    public static HashMap<Integer, String> guardarPorCampo(int opcion1) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(ARCHIVO));
 
         Scanner entrada1 = new Scanner(System.in);
         HashMap<Integer, String> datos = new HashMap<>();
 
         reader.readLine();
-        System.out.println("Elige campo para ordenar");
-        System.out.println("1) nombre ");
-        System.out.println("2) apellido");
-        System.out.println("3) apodo");
-        System.out.println("4) numeroTelefono ");
-        System.out.println("5) correo");
-        int opcion1 = entrada1.nextInt();
-        entrada1.nextLine();
+
         String linea ;
 
         switch (opcion1){

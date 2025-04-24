@@ -1,6 +1,7 @@
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Date;
-import java.util.Scanner;
+import java.io.PrintWriter;
+import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -25,7 +26,8 @@ public class Main {
         System.out.println("3) Actualizar contacto");
         System.out.println("4) Buscar por ID");
         System.out.println("5) Mostrar contactos");
-        System.out.println("6) salir");
+        System.out.println("6) Crear Arboles");
+        System.out.println("7) salir");
         opcion = entrada.nextInt();
         entrada.nextLine();
         switch (opcion){
@@ -90,11 +92,72 @@ public class Main {
             case 5:
                 ArchCSV.mostrarContactos();
                 break;
+
+
+
+            case 6:
+
+                System.out.println("Elige campo para ordenar");
+                System.out.println("1) nombre ");
+                System.out.println("2) apellido");
+                System.out.println("3) apodo");
+                System.out.println("4) numeroTelefono ");
+                System.out.println("5) correo");
+                int opcion1 = entrada.nextInt();
+                entrada.nextLine();
+                String campo = "";
+                String tipoArbol = "";
+                switch (opcion1){case 1: campo = "nombre"; break;case 2: campo = "apellido"; break;case 3: campo = "apodo"; break;case 4: campo = "numeroTelefono"; break; case 5: campo = "correo"; break;}
+                HashMap<Integer, String> datos = ArchCSV.guardarPorCampo(opcion1);
+                int opcion2 =0;
+                List<Integer> idsOrdenados = null;
+                Nodo root = null;
+                System.out.println("Que tipo de arbol desea");
+                System.out.println("1) Arbol AVL");
+                System.out.println("1) BST");
+                opcion2 = entrada.nextInt();entrada.nextLine();
+                switch (opcion2){
+                    case 1:
+                        ArbolAVL arbolAVL = new ArbolAVL(String::compareToIgnoreCase);
+                        for (Map.Entry<Integer, String> entrada1 : datos.entrySet()) {
+                            int clave = entrada1.getKey();
+                            String valor = entrada1.getValue();
+                            arbolAVL.insert(clave, valor);
+                        }
+
+                         idsOrdenados = arbolAVL.recorridoPorNiveles();
+                        tipoArbol = "avl";
+                        root = arbolAVL.getRoot();
+                        break;
+
+                    case 2:
+                        ArbolBST arbolBST = new ArbolBST(String::compareToIgnoreCase);
+                        for (Map.Entry<Integer, String> entrada1 : datos.entrySet()) {
+                            int clave = entrada1.getKey();
+                            String valor = entrada1.getValue();
+                            arbolBST.insert(clave, valor);
+                        }
+
+                        idsOrdenados = arbolBST.recorridoPorNiveles();
+
+                        tipoArbol = "bst";
+                        root = arbolBST.getRoot();
+
+                        break;
+
+                    default:
+                        System.out.println("No existe esa opcion");
+                        break;
+                }
+
+
+                ArchivoIndice.guardarEstructuraConNulls(root,  campo,  tipoArbol);
+                break;
         }
 
 
 
-}while (opcion != 6);
+}while (opcion != 7);
     }
 
 
