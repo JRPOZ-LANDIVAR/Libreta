@@ -41,6 +41,8 @@ public class Main {
                 numeroTelefono = entrada.nextLine();
                 System.out.println("correo: ");
                 correo = entrada.nextLine();
+                System.out.println("direccion: ");
+                direccion = entrada.nextLine();
                 System.out.println("fecha de Nacimiento: ");
                 fechaNacimiento = entrada.nextLine();
                 Contacto contacto = new Contacto( nombre,  apellido,  apodo,  numeroTelefono, correo,  direccion,  fechaNacimiento);

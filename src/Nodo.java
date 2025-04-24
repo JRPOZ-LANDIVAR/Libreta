@@ -1,19 +1,13 @@
+public class Nodo {
+    int id;             // ID del contacto
+    String dato;        // Campo usado para ordenar (ej: nombre, apellido)
+    Nodo left;
+    Nodo right;
+    int height;
 
-
-public class Nodo<T> {
-    protected T value;
-    protected Nodo<T> left;
-    protected Nodo<T> right;
-
-    public Nodo(T value) {
-        this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("(%s) [left: %s] [right: %s]",
-                value,
-                left != null ? left.value : "null",
-                right != null ? right.value : "null");
+    public Nodo(int id, String dato) {
+        this.id = id;
+        this.dato = dato;
+        this.height = 1;
     }
 }

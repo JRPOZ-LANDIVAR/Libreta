@@ -1,5 +1,7 @@
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.Scanner;
 
 
 public class ArchCSV {
@@ -139,6 +141,70 @@ public class ArchCSV {
         }
         reader.close();
 
+    }
+
+    public static HashMap<Integer, String> guardarPorCampo() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(ARCHIVO));
+
+        Scanner entrada1 = new Scanner(System.in);
+        HashMap<Integer, String> datos = new HashMap<>();
+
+        reader.readLine();
+        System.out.println("Elige campo para ordenar");
+        System.out.println("1) nombre ");
+        System.out.println("2) apellido");
+        System.out.println("3) apodo");
+        System.out.println("4) numeroTelefono ");
+        System.out.println("5) correo");
+        int opcion1 = entrada1.nextInt();
+        entrada1.nextLine();
+        String linea ;
+
+        switch (opcion1){
+            case 1:
+
+                while ((linea = reader.readLine()) != null) {
+                    String[] datos1 = linea.split(",");
+
+                    datos.put(Integer.valueOf(datos1[0]), datos1[1]);
+                }
+            break;
+
+            case 2:
+                while ((linea = reader.readLine()) != null) {
+                    String[] datos1 = linea.split(",");
+
+                    datos.put(Integer.valueOf(datos1[0]), datos1[2]);
+                }
+                break;
+
+            case 3:
+                while ((linea = reader.readLine()) != null) {
+                    String[] datos1 = linea.split(",");
+
+                    datos.put(Integer.valueOf(datos1[0]), datos1[3]);
+                }
+                break;
+
+            case 4:
+                while ((linea = reader.readLine()) != null) {
+                    String[] datos1 = linea.split(",");
+
+                    datos.put(Integer.valueOf(datos1[0]), datos1[4]);
+                }
+                break;
+
+            case 5:
+                while ((linea = reader.readLine()) != null) {
+                    String[] datos1 = linea.split(",");
+
+                    datos.put(Integer.valueOf(datos1[0]), datos1[5]);
+                }
+                break;
+
+        }
+        reader.close();
+        return datos;
     }
 
 
